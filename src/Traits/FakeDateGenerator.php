@@ -1,14 +1,23 @@
 <?php namespace BuildR\TestTools\Traits;
 
 use Faker\Factory as FakerFactory;
+use PHPUnit_Framework_TestCase;
 use \InvalidArgumentException;
 
-class FakeDataGenerator {
-
-    /**
-     * Faker instances default localization
-     */
-    const FAKER_LOCALE = 'en_US';
+/**
+ * Common trait that allow easy integration of Faker PHP library
+ *
+ * BuildR PHP Framework
+ *
+ * @author Zoltán Borsos <zolli07@gmail.com>
+ * @package TestTools
+ * @subpackage Traits
+ *
+ * @copyright    Copyright 2016, Zoltán Borsos.
+ * @license      https://github.com/BuildrPHP/Test-Tools/blob/master/LICENSE.md
+ * @link         https://github.com/BuildrPHP/Test-Tools
+ */
+trait FakeDataGenerator {
 
     /**
      * Store faker instances by locale
@@ -27,7 +36,7 @@ class FakeDataGenerator {
      *
      * @return \Faker\Generator
      */
-    public function getFaker($locale = self::FAKER_LOCALE, $forceReCreate = FALSE) {
+    public function getFaker($locale = 'en_US', $forceReCreate = FALSE) {
         if(isset($this->fakerInstances[$locale]) && $forceReCreate === FALSE) {
             return $this->fakerInstances[$locale];
         }
@@ -38,7 +47,10 @@ class FakeDataGenerator {
 
             return $this->fakerInstances[$locale];
         } catch(InvalidArgumentException $e) {
-            $this->fail('Failed to create Faker instance with locale: ' . $locale . ' Message: ' . $e->getMessage());
+            //If this is a PHPUnit test case we fail the test
+            if($this instanceof PHPUnit_Framework_TestCase) {
+                $this->fail('Failed to create Faker instance with locale: ' . $locale . ' Message: ' . $e->getMessage());
+            }
         }
     }
 
