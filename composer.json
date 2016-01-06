@@ -26,7 +26,8 @@
   "license": "GPL-3.0",
   "require": {
     "php": ">=5.6",
-    "fzaninotto/faker": "1.*"
+    "fzaninotto/faker": "1.*",
+    "buildr/foundation": "0.2.*"
   },
   "require-dev": {
     "phing/phing": "2.*",
