@@ -1,5 +1,6 @@
 <?php namespace BuildR\TestTools;
 
+use BuildR\TestTools\Asserts\IsConstantDefinedConstraint;
 use BuildR\TestTools\Traits\FakeDataGenerator;
 use BuildR\TestTools\Traits\ReflectionUtilities;
 use PHPUnit_Framework_TestCase;
@@ -20,5 +21,14 @@ class BuildR_TestCase extends PHPUnit_Framework_TestCase {
 
     use FakeDataGenerator;
     use ReflectionUtilities;
+
+    /**
+     * Assert that the given constant is defined in the global namespace
+     *
+     * @param string $constantName
+     */
+    public function assertConstantDefined($constantName) {
+        self::assertThat($constantName, (new IsConstantDefinedConstraint()));
+    }
 
 }
