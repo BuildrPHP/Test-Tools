@@ -34,7 +34,7 @@ trait FakeDataGenerator {
      * @param string $locale The locale of the instance you want
      * @param bool $forceReCreate When passed any stored instance overwritten by a new one
      *
-     * @return \Faker\Generator
+     * @return \Faker\Generator|NULL
      */
     public function getFaker($locale = 'en_US', $forceReCreate = FALSE) {
         if(isset($this->fakerInstances[$locale]) && $forceReCreate === FALSE) {
@@ -46,11 +46,17 @@ trait FakeDataGenerator {
             $this->fakerInstances[$locale] = $faker;
 
             return $this->fakerInstances[$locale];
+            //@codeCoverageIgnoreStart
         } catch(InvalidArgumentException $e) {
+            //Probably this should never happen
+
             //If this is a PHPUnit test case we fail the test
             if($this instanceof PHPUnit_Framework_TestCase) {
                 $this->fail('Failed to create Faker instance with locale: ' . $locale . ' Message: ' . $e->getMessage());
             }
+
+            return NULL;
+            //@codeCoverageIgnoreEnd
         }
     }
 
