@@ -40,6 +40,9 @@ class IsConstantDefinedConstraintTest extends PHPUnit_Framework_TestCase {
 
         try {
             $constraint->evaluate($constantName);
+
+            //If no exception thrown increase the assertion count by this fake assertion
+            $this->assertTrue(TRUE);
         } catch(\PHPUnit_Framework_ExpectationFailedException $e) {
             $constantName = $this->exporter->export($constantName);
             $expectedMessage = 'Failed asserting that ' . $constantName . ' constant is defined.';
