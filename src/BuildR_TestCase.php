@@ -1,6 +1,7 @@
 <?php namespace BuildR\TestTools;
 
 use BuildR\TestTools\Asserts\IsConstantDefinedConstraint;
+use BuildR\TestTools\Asserts\IsConstantValueEqualsConstraint;
 use BuildR\TestTools\Traits\FakeDataGenerator;
 use BuildR\TestTools\Traits\ReflectionUtilities;
 use PHPUnit_Framework_TestCase;
@@ -29,6 +30,16 @@ class BuildR_TestCase extends PHPUnit_Framework_TestCase {
      */
     public function assertConstantDefined($constantName) {
         self::assertThat($constantName, (new IsConstantDefinedConstraint()));
+    }
+
+    /**
+     * Assert that the given constant value is equals with thi given expectation
+     *
+     * @param string $constantName
+     * @param string $expected
+     */
+    public function assertConstantEquals($constantName, $expected) {
+        self::assertThat($constantName, (new IsConstantValueEqualsConstraint($expected)));
     }
 
 }
