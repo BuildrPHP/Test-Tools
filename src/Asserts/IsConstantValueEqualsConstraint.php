@@ -16,6 +16,8 @@
  */
 class IsConstantValueEqualsConstraint extends \PHPUnit_Framework_Constraint {
 
+
+
     /**
      * @type mixed
      */
@@ -27,6 +29,8 @@ class IsConstantValueEqualsConstraint extends \PHPUnit_Framework_Constraint {
      * @param $value mixed
      */
     public function __construct($value) {
+        parent::__construct();
+
         $this->value = $value;
     }
 
@@ -53,7 +57,7 @@ class IsConstantValueEqualsConstraint extends \PHPUnit_Framework_Constraint {
      * {@inheritDoc}
      */
     public function toString() {
-        return 'constant value not match';
+        return 'constant value is equals to \'' . $this->value . '\'';
     }
 
 }
