@@ -2,13 +2,29 @@
 
 use BuildR\TestTools\Asserts\IsConstantDefinedConstraint;
 use PHPUnit_Framework_TestCase;
+use SebastianBergmann\Exporter\Exporter;
 
 class IsConstantDefinedConstraintTest extends PHPUnit_Framework_TestCase {
+
+    protected $exporter;
+
+    public function setUp() {
+        parent::setUp();
+
+        $this->exporter = new Exporter();
+    }
+
+    public function tearDown() {
+        parent::tearDown();
+
+        unset ($this->exporter);
+    }
 
     public function testConstantProvider() {
         return [
             ['testConstant', TRUE],
             ['undefinedConstant', FALSE],
+            [15, FALSE],
         ];
     }
 
@@ -25,7 +41,9 @@ class IsConstantDefinedConstraintTest extends PHPUnit_Framework_TestCase {
         try {
             $constraint->evaluate($constantName);
         } catch(\PHPUnit_Framework_ExpectationFailedException $e) {
-            $expectedMessage = 'Failed asserting that \'' . $constantName . '\' constant is defined.';
+            $constantName = $this->exporter->export($constantName);
+            $expectedMessage = 'Failed asserting that ' . $constantName . ' constant is defined.';
+
             $this->assertEquals($expectedMessage, $e->getMessage());
         }
     }
