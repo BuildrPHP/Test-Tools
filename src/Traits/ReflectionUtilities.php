@@ -42,7 +42,7 @@ trait ReflectionUtilities {
      *
      * @return NULL|mixed
      */
-    protected function getPropertyValue($className, $propertyName, $concreteClass = NULL, $options = []) {
+    public function getPropertyValue($className, $propertyName, $concreteClass = NULL, $options = []) {
         $callConstructor = (isset($options['callConstructor'])) ? (bool) $options['callConstructor'] : FALSE;
         $reflector = new ReflectionClass($className);
 
@@ -51,6 +51,11 @@ trait ReflectionUtilities {
             $properties = $reflector->getDefaultProperties();
 
             return (isset($properties[$propertyName])) ? $properties[$propertyName] : NULL;
+        }
+
+        //Return NULL if this class not has the given property
+        if(!$reflector->hasProperty($propertyName)) {
+            return NULL;
         }
 
         //Get reflector for property and set it accessible
@@ -69,7 +74,10 @@ trait ReflectionUtilities {
             return $propertyReflector->getValue($reflector->newInstanceArgs($constructorParams));
         }
 
+        //This should never happen
+        //@codeCoverageIgnoreStart
         return NULL;
+        //@codeCoverageIgnoreEnd
     }
 
     /**
@@ -81,7 +89,7 @@ trait ReflectionUtilities {
      *
      * @return NULL|mixed;
      */
-    protected function getStaticPropertyValue($object, $propertyName) {
+    public function getStaticPropertyValue($object, $propertyName) {
         $className = $object;
 
         if(is_object($className)) {
@@ -106,7 +114,7 @@ trait ReflectionUtilities {
      *
      * @throws \BuildR\Foundation\Exception\Exception
      */
-    protected function setProperty($object, $property, $value) {
+    public function setProperty($object, $property, $value) {
         $objectReflector = new ReflectionObject($object);
 
         if(!$objectReflector->hasProperty($property)) {
@@ -135,7 +143,7 @@ trait ReflectionUtilities {
      *
      * @throws \BuildR\Foundation\Exception\Exception
      */
-    protected function invokeMethod($className, $methodName, $concreteClass = NULL, array $options = []) {
+    public function invokeMethod($className, $methodName, $concreteClass = NULL, array $options = []) {
         $callConstructor = (isset($options['callConstructor'])) ? (bool) $options['callConstructor'] : FALSE;
         $methodParams = (isset($options['methodParams'])) ? (array) $options['methodParams'] : [];
         $objectReflector = new ReflectionClass($className);
@@ -145,10 +153,16 @@ trait ReflectionUtilities {
         }
 
         $methodReflector = $objectReflector->getMethod($methodName);
+        $methodReflector->setAccessible(TRUE);
 
         //If this is a static method we simply call it without object creation
         if($methodReflector->isStatic()) {
             return $methodReflector->invokeArgs(NULL, $methodParams);
+        }
+
+        //If concrete is given
+        if($concreteClass !== NULL) {
+            return $methodReflector->invokeArgs($concreteClass, $methodParams);
         }
 
         $calledObject = $objectReflector->newInstanceWithoutConstructor();
