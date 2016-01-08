@@ -20,7 +20,9 @@ use PHPUnit_Framework_TestCase;
  *
  * @codeCoverageIgnore
  */
+//@codingStandardsIgnoreStart
 class BuildR_TestCase extends PHPUnit_Framework_TestCase {
+//@codingStandardsIgnoreEnd
 
     use FakeDataGenerator;
     use ReflectionUtilities;

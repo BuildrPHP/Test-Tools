@@ -52,7 +52,8 @@ trait FakeDataGenerator {
 
             //If this is a PHPUnit test case we fail the test
             if($this instanceof PHPUnit_Framework_TestCase) {
-                $this->fail('Failed to create Faker instance with locale: ' . $locale . ' Message: ' . $e->getMessage());
+                $msg = 'Failed to create Faker instance with locale: ' . $locale . ' Message: ' . $e->getMessage();
+                $this->fail($msg);
             }
 
             return NULL;
