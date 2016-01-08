@@ -144,7 +144,7 @@ trait ReflectionUtilities {
      * @throws \BuildR\Foundation\Exception\Exception
      */
     public function invokeMethod($className, $methodName, $concreteClass = NULL, array $options = []) {
-        $callConstructor = (isset($options['callConstructor'])) ? (bool) $options['callConstructor'] : FALSE;
+        $callClassConstructor = (isset($options['callConstructor'])) ? (bool) $options['callConstructor'] : FALSE;
         $methodParams = (isset($options['methodParams'])) ? (array) $options['methodParams'] : [];
         $objectReflector = new ReflectionClass($className);
 
@@ -166,7 +166,7 @@ trait ReflectionUtilities {
         }
 
         $calledObject = $objectReflector->newInstanceWithoutConstructor();
-        if($callConstructor === TRUE) {
+        if($callClassConstructor === TRUE) {
             $constructorParams = (isset($options['constructorParams'])) ? (array) $options['constructorParams'] : [];
             $calledObject = $objectReflector->newInstanceArgs($constructorParams);
         }
