@@ -17,8 +17,6 @@ use PHPUnit_Framework_TestCase;
  * @copyright    Copyright 2016, Zoltán Borsos.
  * @license      https://github.com/BuildrPHP/Test-Tools/blob/master/LICENSE.md
  * @link         https://github.com/BuildrPHP/Test-Tools
- *
- * @codeCoverageIgnore
  */
 //@codingStandardsIgnoreStart
 class BuildR_TestCase extends PHPUnit_Framework_TestCase {
@@ -31,6 +29,8 @@ class BuildR_TestCase extends PHPUnit_Framework_TestCase {
      * Assert that the given constant is defined in the global namespace
      *
      * @param string $constantName
+     *
+     * @codeCoverageIgnore
      */
     public function assertConstantDefined($constantName) {
         self::assertThat($constantName, (new IsConstantDefinedConstraint()));
@@ -41,6 +41,8 @@ class BuildR_TestCase extends PHPUnit_Framework_TestCase {
      *
      * @param string $constantName
      * @param string $expected
+     *
+     * @codeCoverageIgnore
      */
     public function assertConstantEquals($constantName, $expected) {
         self::assertThat($constantName, (new IsConstantValueEqualsConstraint($expected)));
