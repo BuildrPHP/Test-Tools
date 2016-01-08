@@ -17,6 +17,8 @@ use PHPUnit_Framework_TestCase;
  * @copyright    Copyright 2016, Zoltán Borsos.
  * @license      https://github.com/BuildrPHP/Test-Tools/blob/master/LICENSE.md
  * @link         https://github.com/BuildrPHP/Test-Tools
+ *
+ * @codeCoverageIgnore
  */
 class BuildR_TestCase extends PHPUnit_Framework_TestCase {
 

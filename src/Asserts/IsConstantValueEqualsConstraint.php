@@ -50,7 +50,9 @@ class IsConstantValueEqualsConstraint extends \PHPUnit_Framework_Constraint {
             return TRUE;
         }
 
+        //@codeCoverageIgnoreStart
         return FALSE;
+        //@codeCoverageIgnoreEnd
     }
 
     /**
