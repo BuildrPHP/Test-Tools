@@ -87,7 +87,7 @@ trait ReflectionUtilities {
      * @param object|string $object A concrete class or a FQCN
      * @param string $propertyName The property name
      *
-     * @return NULL|mixed;
+     * @return NULL|mixed
      */
     public function getStaticPropertyValue($object, $propertyName) {
         $className = $object;
