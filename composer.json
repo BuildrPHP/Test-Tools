@@ -30,6 +30,7 @@
     "buildr/foundation": "0.2.*"
   },
   "require-dev": {
+    "couscous/couscous": "1.4.*",
     "phing/phing": "2.*",
     "phpunit/phpunit": "5.*",
     "phploc/phploc": "2.*",
