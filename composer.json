@@ -13,7 +13,7 @@
   "support": {
     "issues": "http://project.zolli.hu",
     "source": "http://project.zolli.hu/diffusion/TESTTOLS/",
-    "docs": "http://docs.buildr-framework.io/test-tools"
+    "docs": "http://docs.buildr-framework.io/test_tools"
   },
   "description": "BuildR Framework Testing Tools",
   "keywords": [
