@@ -4,14 +4,58 @@ use BuildR\TestTools\DataSetLoader\XML\Helper\SimpleXMLNodeTypedAttributeGetter;
 use BuildR\TestTools\Exception\XMLDataSetParsingException;
 use SimpleXMLElement;
 
+/**
+ * Parser for standard XML definition
+ *
+ * ```xml
+ * <testGroups>
+ *     <testGroup name="testGroup">
+ *         <dataSet>
+ *             <dataSetProperty name="input" value="inputValue"/>
+ *             <dataSetProperty name="expected" value="INPUTVALUE"/>
+ *
+ *             ...
+ *         </dataSet>
+ *
+ *         ...
+ *     </testGroup>
+ *
+ *     ...
+ * </testGroups>
+ * ```
+ *
+ * BuildR PHP Framework
+ *
+ * @author Zoltán Borsos <zolli07@gmail.com>
+ * @package TestTools
+ * @subpackage DataSetLoader\XML\Parser
+ *
+ * @copyright    Copyright 2016, Zoltán Borsos.
+ * @license      https://github.com/BuildrPHP/Test-Tools/blob/master/LICENSE.md
+ * @link         https://github.com/BuildrPHP/Test-Tools
+ */
 class StandardXMLDefinitionParser implements XMLDefinitionParserInterface {
 
+    /**
+     * @type string
+     */
     private $groupName;
 
+    /**
+     * Set the parsed test group name. If no name set the first defined
+     * group will be used.
+     *
+     * @param string $groupName
+     */
     public function setTestGroup($groupName) {
         $this->groupName = $groupName;
     }
 
+    /**
+     * Creates the root XPath query to find the correct test group
+     *
+     * @return string
+     */
     private function getXPathQuery() {
         if($this->groupName === NULL) {
             return '/testGroups/testGroup[1]';
@@ -20,6 +64,14 @@ class StandardXMLDefinitionParser implements XMLDefinitionParserInterface {
         return '/testGroups/testGroup[@name="' . $this->groupName . '"]';
     }
 
+    /**
+     * Takes previously find test group and collect all data set from it
+     * parses and returns an array
+     *
+     * @param \SimpleXMLElement $element
+     *
+     * @return array
+     */
     private function createTestArrayFromXmlElement(SimpleXMLElement $element) {
         $result = [];
         $dataSets = $element->xpath('*');
@@ -30,11 +82,18 @@ class StandardXMLDefinitionParser implements XMLDefinitionParserInterface {
 
             foreach($properties as $property) {
                 $typedGetter = new SimpleXMLNodeTypedAttributeGetter($property);
-                die(var_dump($typedGetter->value));
+                $values[$typedGetter->getName()] = $typedGetter->getValue();
             }
+
+            $result[] = $values;
         }
+
+        return $result;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function parse(SimpleXMLElement $root) {
         $result = $root->xpath($this->getXPathQuery());
         

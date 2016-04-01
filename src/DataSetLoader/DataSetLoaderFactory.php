@@ -32,6 +32,14 @@ class DataSetLoaderFactory {
         return new YAMLDataSetLoader($fileLocation, $parser);
     }
 
+    /**
+     * Creates a new XML dateSet parser
+     *
+     * @param string $fileLocation Input file absolute location
+     * @param \BuildR\TestTools\DataSetLoader\XML\Parser\XMLDefinitionParserInterface|NULL $parser
+     *
+     * @return \BuildR\TestTools\DataSetLoader\XML\XMLDataSetLoader
+     */
     public static function XML($fileLocation, XMLDefinitionParserInterface $parser = NULL) {
         return new XMLDataSetLoader($fileLocation, $parser);
     }

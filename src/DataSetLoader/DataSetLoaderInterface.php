@@ -21,8 +21,6 @@ interface DataSetLoaderInterface {
      * @return \BuildR\TestTools\DataSetLoader\DataSetLoaderInterface
      * 
      * @throws \BuildR\TestTools\Exception\DataSetLoadingException
-     *
-     * @return \BuildR\TestTools\DataSetLoader\DataSetLoaderInterface
      */
     public function load();
 

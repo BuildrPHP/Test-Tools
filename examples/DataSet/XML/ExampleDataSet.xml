@@ -1,7 +1,7 @@
 <testGroups>
     <testGroup name="testUpper">
         <dataSet>
-            <dataSetProperty name="input" value="-1e2"/>
+            <dataSetProperty name="input" value="inputValue"/>
             <dataSetProperty name="expected" value="INPUTVALUE"/>
         </dataSet>
 
