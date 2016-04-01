@@ -1,5 +1,8 @@
 <?php namespace BuildR\TestTools\DataSetLoader;
 
+use BuildR\TestTools\DataSetLoader\XML\Parser\XMLDefinitionParserInterface;
+use BuildR\TestTools\DataSetLoader\XML\XMLDataSetLoader;
+use BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface;
 use BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetLoader;
 
 /**
@@ -21,11 +24,16 @@ class DataSetLoaderFactory {
      * Creates a new YAML dataSet parser
      *
      * @param string $fileLocation File absolute location
+     * @param \BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface|NULL $parser
      *
      * @return \BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetLoader
      */
-    public static function YAML($fileLocation) {
-        return new YAMLDataSetLoader($fileLocation);
+    public static function YAML($fileLocation, YAMLParserInterface $parser = NULL) {
+        return new YAMLDataSetLoader($fileLocation, $parser);
+    }
+
+    public static function XML($fileLocation, XMLDefinitionParserInterface $parser = NULL) {
+        return new XMLDataSetLoader($fileLocation, $parser);
     }
 
 }

@@ -1,0 +1,25 @@
+<testGroups>
+    <testGroup name="testUpper">
+        <dataSet>
+            <dataSetProperty name="input" value="-1e2"/>
+            <dataSetProperty name="expected" value="INPUTVALUE"/>
+        </dataSet>
+
+        <dataSet>
+            <dataSetProperty name="input" value="input value"/>
+            <dataSetProperty name="expected" value="INPUT VALUE"/>
+        </dataSet>
+
+        <dataSet>
+            <dataSetProperty name="input" value="input value"/>
+            <dataSetProperty name="expected" value="INPUT VALUE"/>
+        </dataSet>
+    </testGroup>
+
+    <testGroup name="testLower">
+        <dataSet>
+            <dataSetProperty name="input" value="INPUTVALUE"/>
+            <dataSetProperty name="expected" value="inputvalue" />
+        </dataSet>
+    </testGroup>
+</testGroups>
