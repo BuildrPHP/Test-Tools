@@ -17,7 +17,7 @@ use BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface;
  * @license      https://github.com/BuildrPHP/Test-Tools/blob/master/LICENSE.md
  * @link         https://github.com/BuildrPHP/Test-Tools
  */
-class YAMLDataSetParser implements DataSetLoaderInterface {
+class YAMLDataSetLoader implements DataSetLoaderInterface {
 
     /**
      * @type string
@@ -40,7 +40,7 @@ class YAMLDataSetParser implements DataSetLoaderInterface {
     private $result;
 
     /**
-     * YAMLDataSetParser constructor.
+     * YAMLDataSetLoader constructor.
      *
      * @param string $file The laoded YAML file absolute location
      * @param \BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface $parser
@@ -60,7 +60,7 @@ class YAMLDataSetParser implements DataSetLoaderInterface {
      *
      * @param string $dataSetName
      *
-     * @return \BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetParser
+     * @return \BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetLoader
      */
     public function setDataSet($dataSetName) {
         $this->dataSetName = $dataSetName;

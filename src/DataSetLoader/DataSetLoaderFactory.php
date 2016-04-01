@@ -1,6 +1,6 @@
 <?php namespace BuildR\TestTools\DataSetLoader;
 
-use BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetParser;
+use BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetLoader;
 
 /**
  * DataSetParser Factory
@@ -22,10 +22,10 @@ class DataSetLoaderFactory {
      *
      * @param string $fileLocation File absolute location
      *
-     * @return \BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetParser
+     * @return \BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetLoader
      */
     public static function YAML($fileLocation) {
-        return new YAMLDataSetParser($fileLocation);
+        return new YAMLDataSetLoader($fileLocation);
     }
 
 }
