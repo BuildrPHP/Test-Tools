@@ -1,0 +1,9 @@
+testLower:
+  - input: TEST
+    expected: test
+
+testUpper:
+  - input: test
+    expected: TEST
+  - input: áűő
+    expected: ÁŰŐ

@@ -27,7 +27,8 @@
   "require": {
     "php": ">=5.6",
     "fzaninotto/faker": "1.*",
-    "buildr/foundation": "0.2.*"
+    "buildr/foundation": "0.2.*",
+    "symfony/yaml": "2.*"
   },
   "require-dev": {
     "couscous/couscous": "1.4.*",
@@ -51,5 +52,8 @@
   },
   "config": {
     "preferred-install": "dist"
+  },
+  "suggest": {
+    "ext-yaml": "Allow you to use the LibYaml parser (in DataSet provider). It is much faster"
   }
 }
