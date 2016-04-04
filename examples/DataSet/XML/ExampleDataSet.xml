@@ -31,6 +31,7 @@
             <dataSetProperty name="boolValueInteger" value="1" type="bool" />
             <dataSetProperty name="boolValueTextual" value="false" type="boolean" />
             <dataSetProperty name="floatValue" value="1.42" type="double" />
+            <dataSetProperty name="arrayValue" value="1;2;three" type="array" />
         </dataSet>
     </testGroup>
 </testGroups>

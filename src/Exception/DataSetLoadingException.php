@@ -14,6 +14,8 @@ use BuildR\Foundation\Exception\Exception;
  * @copyright    Copyright 2016, Zoltán Borsos.
  * @license      https://github.com/BuildrPHP/Test-Tools/blob/master/LICENSE.md
  * @link         https://github.com/BuildrPHP/Test-Tools
+ *
+ * @codeCoverageIgnore
  */
 class DataSetLoadingException extends Exception {
 

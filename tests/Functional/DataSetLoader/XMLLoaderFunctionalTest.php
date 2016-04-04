@@ -59,6 +59,9 @@ class XMLLoaderFunctionalTest extends BuildR_TestCase {
 
         //Float
         $this->assertTrue(is_float($result['floatValue']));
+
+        //Array
+        $this->assertEquals([1, 2, 'three'], $result['arrayValue']);
     }
 
 }

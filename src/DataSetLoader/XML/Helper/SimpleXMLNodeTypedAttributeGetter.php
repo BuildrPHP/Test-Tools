@@ -62,6 +62,9 @@ class SimpleXMLNodeTypedAttributeGetter {
             case 'double':
                 $value = (float) $value;
                 break;
+            case 'array':
+                $value = explode(';', $value);
+                break;
         }
 
         return $value;
