@@ -22,4 +22,15 @@
             <dataSetProperty name="expected" value="inputvalue" />
         </dataSet>
     </testGroup>
+
+    <testGroup name="typedTestGroup">
+        <dataSet>
+            <dataSetProperty name="input" value="INPUTVALUE"/>
+            <dataSetProperty name="expected" value="inputvalue" />
+            <dataSetProperty name="integerValue" value="254" type="int" />
+            <dataSetProperty name="boolValueInteger" value="1" type="bool" />
+            <dataSetProperty name="boolValueTextual" value="false" type="boolean" />
+            <dataSetProperty name="floatValue" value="1.42" type="double" />
+        </dataSet>
+    </testGroup>
 </testGroups>

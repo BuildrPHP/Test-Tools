@@ -1,4 +1,4 @@
-<?php namespace BuildR\TestTools\Tests\Asserts;
+<?php namespace BuildR\TestTools\Tests\Unit\Asserts;
 
 use BuildR\TestTools\Asserts\IsConstantDefinedConstraint;
 use PHPUnit_Framework_TestCase;

@@ -1,4 +1,4 @@
-<?php namespace BuildR\TestTools\Tests\Traits;
+<?php namespace BuildR\TestTools\Tests\Unit\Traits;
 
 use BuildR\TestTools\Tests\Fixtures\FakeDataGeneratorImpl;
 use PHPUnit_Framework_TestCase;

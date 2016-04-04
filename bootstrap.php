@@ -8,3 +8,6 @@ if(!file_exists($autoloadFile)) {
 }
 
 include_once $autoloadFile;
+
+//Create constants for tests
+define('EXAMPLES_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'examples' . DIRECTORY_SEPARATOR . 'DataSet');

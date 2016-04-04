@@ -1,4 +1,4 @@
-<?php namespace BuildR\TestTools\Tests\Traits;
+<?php namespace BuildR\TestTools\Tests\Unit\Traits;
 
 use BuildR\Foundation\Exception\Exception;
 use BuildR\TestTools\Tests\Fixtures\ReflectionUtilsImpl;

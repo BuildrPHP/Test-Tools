@@ -47,6 +47,8 @@ class XMLDataSetLoader implements DataSetLoaderInterface {
         if($this->parser === NULL) {
             $this->parser = new StandardXMLDefinitionParser();
         }
+
+        $this->load();
     }
 
     /**
