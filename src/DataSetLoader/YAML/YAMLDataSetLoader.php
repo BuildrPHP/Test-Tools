@@ -35,9 +35,9 @@ class YAMLDataSetLoader implements DataSetLoaderInterface {
     private $dataSetName;
 
     /**
-     * @type array
+     * @type string
      */
-    private $result;
+    private $content;
 
     /**
      * YAMLDataSetLoader constructor.
@@ -52,6 +52,8 @@ class YAMLDataSetLoader implements DataSetLoaderInterface {
         if($this->parser === NULL) {
             $this->parser = YAMLParserFactory::getParser();
         }
+
+        $this->load();
     }
 
     /**
@@ -69,11 +71,19 @@ class YAMLDataSetLoader implements DataSetLoaderInterface {
     }
 
     /**
+     * Returns the current parser
+     *
+     * @return \BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface
+     */
+    public function getParser() {
+       return $this->parser;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function load() {
-        $content = file_get_contents($this->file);
-        $this->result = $this->parser->parse($content);
+        $this->content = file_get_contents($this->file);
 
         return $this;
     }
@@ -82,11 +92,13 @@ class YAMLDataSetLoader implements DataSetLoaderInterface {
      * {@inheritDoc}
      */
     public function getResult() {
-        if($this->dataSetName !== NULL && isset($this->result[$this->dataSetName])) {
-            return $this->result[$this->dataSetName];
+        $result = $this->parser->parse($this->content);
+
+        if($this->dataSetName !== NULL && isset($result[$this->dataSetName])) {
+            return $result[$this->dataSetName];
         }
 
-        return current($this->result);
+        return current($result);
     }
 
 }

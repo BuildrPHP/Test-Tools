@@ -21,9 +21,11 @@ class YAMLParserFactory {
      * @return \BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface
      */
     public static function getParser() {
+        //@codeCoverageIgnoreStart
         if(extension_loaded('ext-yaml')) {
             return new LibYAMLParser();
         }
+        //@codeCoverageIgnoreEnd
         
         return new SymfonyYAMLParser();
     }

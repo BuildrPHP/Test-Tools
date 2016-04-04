@@ -5,7 +5,7 @@ use BuildR\TestTools\DataSetLoader\DataSetLoaderFactory;
 use BuildR\TestTools\DataSetLoader\XML\Parser\StandardXMLDefinitionParser;
 use BuildR\TestTools\DataSetLoader\XML\XMLDataSetLoader;
 
-class XMLLoaderTest extends BuildR_TestCase {
+class XMLLoaderFunctionalTest extends BuildR_TestCase {
 
     /**
      * The absolute location of teh example dataSet

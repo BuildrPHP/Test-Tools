@@ -13,6 +13,8 @@
  * @copyright    Copyright 2016, Zoltán Borsos.
  * @license      https://github.com/BuildrPHP/Test-Tools/blob/master/LICENSE.md
  * @link         https://github.com/BuildrPHP/Test-Tools
+ *
+ * @codeCoverageIgnoreFile
  */
 class LibYAMLParser implements YAMLParserInterface {
 
