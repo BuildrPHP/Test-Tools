@@ -56,7 +56,9 @@ class StandardXMLDefinitionParser implements XMLDefinitionParserInterface {
      *
      * @return string
      */
+    //@codingStandardIgnoreStart
     private function getXPathQuery() {
+    //@codingStandardIgnoreEnd
         if($this->groupName === NULL) {
             return '/testGroups/testGroup[1]';
         }

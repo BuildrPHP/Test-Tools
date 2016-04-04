@@ -28,10 +28,10 @@ class DataSetLoaderFactory {
      * @param \BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface|NULL $parser
      *
      * @return \BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetLoader
-     *
-     * @codingStandardsIgnoreLine
      */
+    //@codingStandardIgnoreStart
     public static function YAML($fileLocation, $dataSetName = NULL, YAMLParserInterface $parser = NULL) {
+    //@codingStandardIgnoreEnd
         $loader = new YAMLDataSetLoader($fileLocation, $parser);
 
         if($dataSetName !== NULL) {
@@ -52,7 +52,9 @@ class DataSetLoaderFactory {
      *
      * @codingStandardsIgnoreLine
      */
+    //@codingStandardIgnoreStart
     public static function XML($fileLocation, $dataSetName = NULL, XMLDefinitionParserInterface $parser = NULL) {
+    //@codingStandardIgnoreEnd
         $loader = new XMLDataSetLoader($fileLocation, $parser);
 
         if($dataSetName !== NULL) {
