@@ -24,24 +24,40 @@ class DataSetLoaderFactory {
      * Creates a new YAML dataSet parser
      *
      * @param string $fileLocation File absolute location
+     * @param string|NULL $dataSetName The name of the loaded dataSet If not provided, the first dataSet will be used.
      * @param \BuildR\TestTools\DataSetLoader\YAML\Parser\YAMLParserInterface|NULL $parser
      *
      * @return \BuildR\TestTools\DataSetLoader\YAML\YAMLDataSetLoader
      */
-    public static function YAML($fileLocation, YAMLParserInterface $parser = NULL) {
-        return new YAMLDataSetLoader($fileLocation, $parser);
+    public static function YAML($fileLocation, $dataSetName = NULL, YAMLParserInterface $parser = NULL) {
+        $loader = new YAMLDataSetLoader($fileLocation, $parser);
+
+        if($dataSetName !== NULL) {
+            $loader->setDataSet($dataSetName);
+        }
+
+        return $loader;
     }
 
     /**
      * Creates a new XML dateSet parser
      *
      * @param string $fileLocation Input file absolute location
+     * @param string|NULL $dataSetName The name of the loaded dataSet If not provided, the first dataSet will be used.
      * @param \BuildR\TestTools\DataSetLoader\XML\Parser\XMLDefinitionParserInterface|NULL $parser
      *
      * @return \BuildR\TestTools\DataSetLoader\XML\XMLDataSetLoader
      */
-    public static function XML($fileLocation, XMLDefinitionParserInterface $parser = NULL) {
-        return new XMLDataSetLoader($fileLocation, $parser);
+    public static function XML($fileLocation, $dataSetName = NULL, XMLDefinitionParserInterface $parser = NULL) {
+        $loader = new XMLDataSetLoader($fileLocation, $parser);
+
+        if($dataSetName !== NULL) {
+            /** @type \BuildR\TestTools\DataSetLoader\XML\Parser\StandardXMLDefinitionParser $parser */
+            $parser = $loader->getParser();
+            $parser->setTestGroup($dataSetName);
+        }
+
+        return $loader;
     }
 
 }
