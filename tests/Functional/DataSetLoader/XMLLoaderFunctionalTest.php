@@ -33,17 +33,18 @@ class XMLLoaderFunctionalTest extends BuildR_TestCase {
         $result = $loader->getResult();
 
         $this->assertCount(1, $result);
-        $this->assertCount(2, $result[0]);
+        $this->assertCount(2, $result['Index #0']);
     }
 
     public function testStandardParserReturnTheFirstTestGroupIfNoOneSpecified() {
         $result = DataSetLoaderFactory::XML(self::testFile)->getResult();
+        var_dump($result);
 
         $this->assertCount(3, $result);
     }
 
     public function testStandardParserCanConvertTypes() {
-        $result = DataSetLoaderFactory::XML(self::testFile, 'typedTestGroup')->getResult()[0];
+        $result = DataSetLoaderFactory::XML(self::testFile, 'typedTestGroup')->getResult()['Index #0'];
 
         //String
         $this->assertTrue(is_string($result['input']));

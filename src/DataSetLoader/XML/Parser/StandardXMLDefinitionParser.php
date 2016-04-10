@@ -77,17 +77,22 @@ class StandardXMLDefinitionParser implements XMLDefinitionParserInterface {
     private function createTestArrayFromXmlElement(SimpleXMLElement $element) {
         $result = [];
         $dataSets = $element->xpath('*');
+        $setCount = 0;
 
         foreach($dataSets as $dataSet) {
             $values = [];
+
             $properties = $dataSet->xpath('*');
+            $setName = (string) $dataSet->attributes()->name;
+            $setName = (empty($setName)) ? 'Index #' . $setCount : $setName;
 
             foreach($properties as $property) {
                 $typedGetter = new SimpleXMLNodeTypedAttributeGetter($property);
                 $values[$typedGetter->getName()] = $typedGetter->getValue();
             }
 
-            $result[] = $values;
+            $result[$setName] = $values;
+            $setCount++;
         }
 
         return $result;
