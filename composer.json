@@ -31,7 +31,7 @@
     "symfony/yaml": "~3.1"
   },
   "require-dev": {
-    "couscous/couscous": "1.4.*",
+    "couscous/couscous": "~1.5",
     "phing/phing": "2.*",
     "phpunit/phpunit": "5.*",
     "phploc/phploc": "3.*",
