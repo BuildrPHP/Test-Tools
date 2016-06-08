@@ -9,10 +9,6 @@
 
 # BuildR - Testing Tools
 
-+# Documentation
- +
- +[TestTools Documentation](https://docs.zolli.hu/display/BCTT)
-
 ## Installation
 
 ### With Composer
@@ -20,6 +16,9 @@
 ```
 composer require buildr/test-tools
 ```
+
+# Documentation
+[TestTools Documentation](https://docs.zolli.hu/display/BCTT)
 
 ## ToDo
 
