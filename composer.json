@@ -1,19 +1,19 @@
 {
   "name": "buildr/test-tools",
   "type": "library",
-  "homepage": "http://buildr-framework.io",
+  "homepage": "https://buildr-framework.io",
   "authors": [
     {
       "name": "Zoltán Borsos",
       "email": "zolli07@gmail.com",
-      "homepage": "http://zolli.hu",
+      "homepage": "https://zolli.hu",
       "role": "Developer"
     }
   ],
   "support": {
-    "issues": "http://project.zolli.hu",
-    "source": "http://project.zolli.hu/diffusion/TESTTOLS/",
-    "docs": "http://docs.buildr-framework.io/test_tools"
+    "issues": "https://project.zolli.hu",
+    "source": "https://code.zolli.hu/projects/BC/repos/testtools",
+    "docs": "https://docs.zolli.hu/display/BCTT"
   },
   "description": "BuildR Framework Testing Tools",
   "keywords": [
@@ -28,7 +28,7 @@
     "php": ">=5.6",
     "fzaninotto/faker": "1.*",
     "buildr/foundation": "0.2.*",
-    "symfony/yaml": "2.*"
+    "symfony/yaml": "~3.1"
   },
   "require-dev": {
     "couscous/couscous": "1.4.*",
