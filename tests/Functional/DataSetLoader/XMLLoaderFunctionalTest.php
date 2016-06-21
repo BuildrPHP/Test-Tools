@@ -38,7 +38,6 @@ class XMLLoaderFunctionalTest extends BuildR_TestCase {
 
     public function testStandardParserReturnTheFirstTestGroupIfNoOneSpecified() {
         $result = DataSetLoaderFactory::XML(self::testFile)->getResult();
-        var_dump($result);
 
         $this->assertCount(3, $result);
     }

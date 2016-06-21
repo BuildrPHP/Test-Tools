@@ -1,6 +1,6 @@
 <?php namespace BuildR\TestTools\DataSetLoader\XML\Parser;
 
-use BuildR\TestTools\DataSetLoader\XML\Helper\SimpleXMLNodeTypedAttributeGetter;
+use BuildR\TestTools\DataSetLoader\XML\StaticType\SimpleXMLNodeTypedAttributeGetter;
 use BuildR\TestTools\Exception\XMLDataSetParsingException;
 use SimpleXMLElement;
 
