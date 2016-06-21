@@ -37,13 +37,6 @@ class SimpleXMLNodeTypedAttributeGetter {
         'float|double' => FloatCaster::class,
         'array' => ArrayCaster::class,
     ];
-
-    /**
-     * Runtime caching
-     *
-     * @type array
-     */
-    private $cache = [];
     
     /**
      * @type \SimpleXMLElement
@@ -71,12 +64,7 @@ class SimpleXMLNodeTypedAttributeGetter {
         $type = (empty($type)) ? 'string' : $type;
         $value = (string) $this->element->attributes()->value;
 
-        $casterClassName = $this->tryGetClassFromCache($type);
-
-        // If caching not provides result
-        if($casterClassName === NULL) {
-            $casterClassName = $this->resolveCasterClassName($type);
-        }
+        $casterClassName = $this->resolveCasterClassName($type);
 
         /** @type \BuildR\TestTools\Caster\CasterInterface $casterObject */
         $casterObject = new $casterClassName($value);
@@ -103,21 +91,6 @@ class SimpleXMLNodeTypedAttributeGetter {
         }
         
         throw CasterException::unresolvableType($type);
-    }
-    
-    /**
-     * Try to fetch resolved type caster class from runtime cache
-     *
-     * @param string $type
-     *
-     * @return string|NULL
-     */
-    private function tryGetClassFromCache($type) {
-        if(isset($this->cache[$type])) {
-            return $this->cache[$type];
-        }
-
-        return NULL;
     }
 
     /**
